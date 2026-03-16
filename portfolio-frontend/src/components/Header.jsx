@@ -15,6 +15,7 @@ const Header = ({ clearChat }) => {
         <NavLink to="/" className={({isActive}) => `px-4 py-1.5 rounded-full transition-all ${isActive ? "bg-brand-500/10 text-brand-400" : "text-zinc-500 hover:text-zinc-200"}`}>Home</NavLink>
         <NavLink to="/projects" className={({isActive}) => `px-4 py-1.5 rounded-full transition-all ${isActive ? "bg-brand-500/10 text-brand-400" : "text-zinc-500 hover:text-zinc-200"}`}>Projects</NavLink>
         <NavLink to="/skills" className={({isActive}) => `px-4 py-1.5 rounded-full transition-all ${isActive ? "bg-brand-500/10 text-brand-400" : "text-zinc-500 hover:text-zinc-200"}`}>Skills</NavLink>
+        <NavLink to="/achievements" className={({isActive}) => `px-4 py-1.5 rounded-full transition-all ${isActive ? "bg-brand-500/10 text-brand-400" : "text-zinc-500 hover:text-zinc-200"}`}>Hall of Fame</NavLink>
         <NavLink to="/contact" className={({isActive}) => `px-4 py-1.5 rounded-full transition-all ${isActive ? "bg-brand-500/10 text-brand-400" : "text-zinc-500 hover:text-zinc-200"}`}>Contact</NavLink>
       </nav>
 

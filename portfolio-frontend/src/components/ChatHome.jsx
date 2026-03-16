@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPaperPlane, FaUser, FaRobot, FaMagic, FaCode, FaTools, FaEnvelope, FaTrash, FaMicrophone, FaMicrophoneSlash, FaVolumeUp, FaStop } from 'react-icons/fa';
+import { FaPaperPlane, FaUser, FaRobot, FaMagic, FaCode, FaTools, FaEnvelope, FaTrash, FaMicrophone, FaMicrophoneSlash, FaVolumeUp, FaStop, FaTrophy } from 'react-icons/fa';
 import axios from 'axios';
 
 // Import Rich UI Components
 import ProfileCard from './chat/ProfileCard';
 import ProjectsList from './chat/ProjectsList';
 import SkillsGrid from './chat/SkillsGrid';
+import AchievementsList from './chat/AchievementsList';
 import ContactCard from './chat/ContactCard';
 import Typewriter from './chat/Typewriter';
 
@@ -68,6 +69,7 @@ function ChatHome() {
     { label: 'Me', icon: <FaUser />, prompt: 'Tell me about yourself' },
     { label: 'Projects', icon: <FaCode />, prompt: 'Show me your projects' },
     { label: 'Skills', icon: <FaTools />, prompt: 'What are your skills?' },
+    { label: 'Hall of Fame', icon: <FaTrophy />, prompt: 'Show me your achievements' },
     { label: 'Contact', icon: <FaEnvelope />, prompt: 'How can I contact you?' },
   ];
 
@@ -81,6 +83,7 @@ function ChatHome() {
     if (lowerText.includes('myself') || lowerText.includes('background') || lowerText.includes('immanuel') && !lowerText.includes('contact')) return <ProfileCard />;
     if (lowerText.includes('project') || lowerText.includes('built')) return <ProjectsList />;
     if (lowerText.includes('skill') || lowerText.includes('technology') || lowerText.includes('stack')) return <SkillsGrid />;
+    if (lowerText.includes('achievement') || lowerText.includes('award') || lowerText.includes('hall of fame') || lowerText.includes('trophy')) return <AchievementsList />;
     if (lowerText.includes('contact') || lowerText.includes('reach') || lowerText.includes('hire')) return <ContactCard />;
     return null;
   };
@@ -111,39 +114,63 @@ function ChatHome() {
 
           {/* Hero */}
           {messages.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-10 md:py-20 text-center animate-fade-in px-4">
-              {/* Status Badge */}
-              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/20 bg-brand-500/5 text-brand-400 text-xs font-semibold mb-8 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse-slow"></span>
-                Available for opportunities
-              </div>
-              
-              <h1 className="text-4xl md:text-7xl leading-[1.05] font-black mb-6 tracking-tight text-white max-w-4xl">
-                Building the future with <br className="hidden md:block"/>
-                <span className="text-gradient">
-                  AI & modern code.
-                </span>
-              </h1>
-              
-              <p className="text-zinc-500 text-[15px] md:text-lg font-medium max-w-xl mx-auto mb-12 leading-relaxed">
-                Full-Stack Developer & AI Engineer crafting intelligent systems. Ask my assistant anything about my work.
-              </p>
+            <div className="animate-fade-in px-4 relative py-6 md:py-16">
+              {/* Animated Gradient Orb */}
+              <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-gradient-to-br from-brand-500/10 via-brand-400/5 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
 
-              {/* Floating Stats */}
-              <div className="flex gap-8 mb-6">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-white">3+</div>
-                  <div className="text-[11px] text-zinc-600 font-medium uppercase tracking-wider">Projects</div>
+              <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 max-w-5xl mx-auto">
+                {/* LEFT — Text Content */}
+                <div className="flex-1 text-center md:text-left relative z-10">
+                  {/* Status Badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/20 bg-brand-500/5 text-brand-400 text-xs font-semibold mb-6 backdrop-blur-sm">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow"></span>
+                    Available for opportunities
+                  </div>
+                  
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl leading-[1.05] font-black mb-5 tracking-tight text-white">
+                    Hi, I'm <span className="text-gradient">Immanuel A.</span>
+                  </h1>
+                  <h2 className="text-xl md:text-2xl font-bold text-zinc-400 mb-6">
+                    Full-Stack Developer & <span className="text-brand-400">AI Engineer</span>
+                  </h2>
+                  
+                  <p className="text-zinc-500 text-[15px] font-medium max-w-lg mb-8 leading-relaxed">
+                    I specialize in building RAG pipelines, LLM agents, and modern web platforms. Ask my AI assistant below to learn more.
+                  </p>
+
+                  {/* Social Links */}
+                  <div className="flex items-center gap-3 mb-10 justify-center md:justify-start">
+                    <a href="https://github.com/Immanuelj15" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all group">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/a-immanuel15/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all group">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="mailto:immanvalan@gmail.com" className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all group">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                    <a href="/resume.pdf" download="Immanuel_Resume.pdf" className="ml-2 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-zinc-900 hover:from-brand-400 hover:to-brand-500 transition-all text-[13px] font-bold shadow-lg shadow-brand-500/20">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      Resume
+                    </a>
+                  </div>
                 </div>
-                <div className="w-px h-12 bg-zinc-800"></div>
-                <div className="text-center">
-                  <div className="text-2xl font-black text-white">15+</div>
-                  <div className="text-[11px] text-zinc-600 font-medium uppercase tracking-wider">Technologies</div>
-                </div>
-                <div className="w-px h-12 bg-zinc-800"></div>
-                <div className="text-center">
-                  <div className="text-2xl font-black text-white">8.0</div>
-                  <div className="text-[11px] text-zinc-600 font-medium uppercase tracking-wider">CGPA</div>
+
+                {/* RIGHT — Profile Photo */}
+                <div className="relative shrink-0 group">
+                  {/* Glow behind photo */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-500/20 via-blue-500/10 to-transparent rounded-3xl blur-2xl scale-110 animate-pulse-slow"></div>
+                  
+                  <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-3xl overflow-hidden border-2 border-brand-500/20 shadow-2xl shadow-brand-500/10 group-hover:border-brand-400/40 transition-all duration-500">
+                    <img src="/assets/profile.png" alt="Immanuel A" className="w-full h-full object-cover object-top" />
+                    {/* Subtle gradient overlay at bottom */}
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#09090b]/80 to-transparent"></div>
+                  </div>
+
+                  {/* Floating tag */}
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#0f0f12] border border-brand-500/30 text-brand-400 text-[11px] font-bold uppercase tracking-wider shadow-lg whitespace-nowrap">
+                    ✦ AI Engineer
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,7 +185,7 @@ function ChatHome() {
                 className={`flex gap-4 max-w-4xl mx-auto ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
               >
                 {msg.sender === 'ai' && (
-                  <div className="w-9 h-9 mt-1 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br from-brand-500/20 to-orange-500/10 text-brand-400 border border-brand-500/20 shadow-lg shadow-brand-500/5">
+                  <div className="w-9 h-9 mt-1 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br from-brand-500/20 to-blue-500/10 text-brand-400 border border-brand-500/20 shadow-lg shadow-brand-500/5">
                     <FaMagic size={14} />
                   </div>
                 )}
@@ -197,7 +224,7 @@ function ChatHome() {
 
           {isLoading && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-4 max-w-4xl mx-auto">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-orange-500 flex items-center justify-center shrink-0 mt-1 shadow-lg shadow-brand-500/20">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-blue-500 flex items-center justify-center shrink-0 mt-1 shadow-lg shadow-brand-500/20">
                 <FaMagic className="text-white text-xs" />
               </div>
               <div className="flex items-center gap-2 px-4 py-3">
