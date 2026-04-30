@@ -14,7 +14,13 @@ const SkillsGrid = () => {
         { name: "LlamaIndex", color: "text-indigo-400", bg: "bg-indigo-400/10", border: "border-indigo-400/20" },
         { name: "JavaScript", color: "text-yellow-300", bg: "bg-yellow-300/10", border: "border-yellow-300/20" },
         { name: "ChromaDB", color: "text-pink-400", bg: "bg-pink-400/10", border: "border-pink-400/20" },
-        { name: "Streamlit", color: "text-rose-400", bg: "bg-rose-400/10", border: "border-rose-400/20" }
+        { name: "Streamlit", color: "text-rose-400", bg: "bg-rose-400/10", border: "border-rose-400/20" },
+        { name: "OpenAI API", color: "text-teal-400", bg: "bg-teal-400/10", border: "border-teal-400/20" },
+        { name: "AWS Bedrock", color: "text-amber-400", bg: "bg-amber-400/10", border: "border-amber-400/20" },
+        { name: "Tailwind CSS", color: "text-sky-400", bg: "bg-sky-400/10", border: "border-sky-400/20" },
+        { name: "Git", color: "text-orange-300", bg: "bg-orange-300/10", border: "border-orange-300/20" },
+        { name: "Vercel", color: "text-zinc-200", bg: "bg-zinc-200/10", border: "border-zinc-200/20" },
+        { name: "FAISS", color: "text-violet-400", bg: "bg-violet-400/10", border: "border-violet-400/20" },
     ];
 
     const containerVariants = {

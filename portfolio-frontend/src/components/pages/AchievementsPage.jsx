@@ -149,7 +149,7 @@ const AchievementsPage = () => {
                                             </span>
                                         </div>
                                         <span className="text-sm font-bold text-zinc-400 italic">
-                                            "{achievement.highlight}"
+                                            &ldquo;{achievement.highlight}&rdquo;
                                         </span>
                                     </div>
 

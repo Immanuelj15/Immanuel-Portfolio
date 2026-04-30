@@ -20,7 +20,7 @@ const Header = ({ clearChat }) => {
       </nav>
 
       {/* Clear Chat */}
-      <div className="w-20 flex justify-end hidden sm:flex">
+      <div className="w-20 sm:flex justify-end hidden">
         {clearChat && (
           <button
             onClick={clearChat}

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 const ProfileCard = () => {
     const timeline = [
         { year: "2022 – Present", title: "B.E. Computer Science Engineering", place: "KPR Institute of Engineering and Technology", detail: "CGPA: 8.0" },
+        { year: "2025", title: "MERN Stack Intern", place: "TechNest", detail: "Full-stack development & real-world product delivery" },
         { year: "2024", title: "AI/ML Developer", place: "Self-directed & Open Source", detail: "Built RAG pipelines, LLM agents, AI tools" },
         { year: "2024", title: "AWS Cloud Practitioner", place: "Amazon Web Services", detail: "Bedrock, Titan Embeddings, S3" },
     ];

@@ -7,19 +7,31 @@ const ProjectsList = () => {
             title: "DevMate AI — Developer Onboarding Assistant",
             description: "Built a RAG-based onboarding assistant reducing developer onboarding time by 80%+ using Amazon Bedrock (Nova Lite) and Titan Embeddings. Engineered multi-language GitHub repo ingestion indexed into FAISS, with Knowledge Quiz generation and a voice-interactive UI.",
             tags: ["Python", "LangChain", "Bedrock", "FAISS", "Streamlit"],
-            link: "#"
+            link: "https://github.com/Immanuelj15"
         },
         {
             title: "Smart HealthCare Portal",
             description: "Developed a full-stack healthcare system with JWT authentication and role-based dashboards. Built REST APIs for appointments, profiles, and admin monitoring, and integrated AI-powered health recommendation features.",
             tags: ["React", "Node.js", "Express", "MongoDB"],
-            link: "#"
+            link: "https://github.com/Immanuelj15"
         },
         {
             title: "AI Agent for Prescription Guidance",
             description: "Built a Generative AI agent for medicine availability, dosage guidance, and alternatives. Implemented RAG using LangChain + LlamaIndex with a ChromaDB vector store, deployed via Streamlit.",
             tags: ["LangChain", "LlamaIndex", "ChromaDB", "Ollama"],
-            link: "#"
+            link: "https://github.com/Immanuelj15"
+        },
+        {
+            title: "CLI-Code",
+            description: "High-performance Node.js CLI tool for intelligent website cloning and automated OpenAI-driven code translation. Enables rapid front-end scaffolding from any live URL.",
+            tags: ["Node.js", "Puppeteer", "OpenAI"],
+            link: "https://github.com/Immanuelj15"
+        },
+        {
+            title: "Auto Slide Generator",
+            description: "Automated document-to-presentation pipeline using abstractive summarization and rule-based slide generation. Converts PDFs into clean, structured slides instantly.",
+            tags: ["FastAPI", "Transformers", "PyMuPDF"],
+            link: "https://github.com/Immanuelj15"
         }
     ];
 

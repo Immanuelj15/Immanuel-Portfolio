@@ -11,7 +11,7 @@ import AchievementsList from './chat/AchievementsList';
 import ContactCard from './chat/ContactCard';
 import Typewriter from './chat/Typewriter';
 
-function ChatHome() {
+function ChatHome({ registerClear }) {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [speakingMessageId, setSpeakingMessageId] = useState(null);
@@ -25,6 +25,11 @@ function ChatHome() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
   useEffect(() => { scrollToBottom(); }, [messages, isLoading]);
+
+  useEffect(() => {
+    if (registerClear) registerClear(clearChat);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [registerClear]);
 
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -80,7 +85,7 @@ function ChatHome() {
 
   const determineComponentToRender = (text) => {
     const lowerText = text.toLowerCase();
-    if (lowerText.includes('myself') || lowerText.includes('background') || lowerText.includes('immanuel') && !lowerText.includes('contact')) return <ProfileCard />;
+    if (lowerText.includes('myself') || lowerText.includes('background') || (lowerText.includes('immanuel') && !lowerText.includes('contact'))) return <ProfileCard />;
     if (lowerText.includes('project') || lowerText.includes('built')) return <ProjectsList />;
     if (lowerText.includes('skill') || lowerText.includes('technology') || lowerText.includes('stack')) return <SkillsGrid />;
     if (lowerText.includes('achievement') || lowerText.includes('award') || lowerText.includes('hall of fame') || lowerText.includes('trophy')) return <AchievementsList />;
@@ -96,7 +101,8 @@ function ChatHome() {
     setInput(''); setIsLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 300));
-      const response = await axios.post('http://localhost:5000/api/chat', { message: userText });
+      const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await axios.post(`${API_BASE}/api/chat`, { message: userText });
       const aiResponseText = response.data.reply;
       let componentToRender = determineComponentToRender(userText);
       if (!componentToRender) componentToRender = determineComponentToRender(aiResponseText);
@@ -109,7 +115,7 @@ function ChatHome() {
 
   return (
     <div className="flex flex-col h-full bg-transparent text-zinc-100 font-sans overflow-hidden relative z-10">
-      <main className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-12 py-8 scroll-smooth z-0 pt-4">
+      <main className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-12 py-8 scroll-smooth z-0 pt-4" id="chat-scroll-area">
         <div className="max-w-4xl mx-auto space-y-8 pb-32">
 
           {/* Hero */}

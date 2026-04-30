@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import ChatHome from './components/ChatHome';
@@ -22,6 +22,11 @@ function PageLayout({ title, subtitle, children }) {
 }
 
 function App() {
+  const clearChatRef = useRef(null);
+  const handleClearChat = useCallback(() => {
+    if (clearChatRef.current) clearChatRef.current();
+  }, []);
+
   return (
     <div className="flex flex-col h-screen bg-[#03040b] text-zinc-100 font-sans selection:bg-brand-500/30 overflow-y-auto overflow-x-hidden noise-overlay relative">
       <div className="mesh-bg"></div>
@@ -31,9 +36,9 @@ function App() {
       </div>
       <div className="stardust"></div>
       
-      <Header />
+      <Header clearChat={handleClearChat} />
       <Routes>
-        <Route path="/" element={<ChatHome />} />
+        <Route path="/" element={<ChatHome registerClear={(fn) => { clearChatRef.current = fn; }} />} />
         
         <Route path="/projects" element={
           <PageLayout 
